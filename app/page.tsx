@@ -5,8 +5,7 @@ import Page from "./todo-no-rls/page";
 export default function Home() {
   return (
     <div>
-      <Page />
-      <TodoContainer />
+      Home
     </div>
   );
 }
