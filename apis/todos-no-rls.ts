@@ -1,7 +1,6 @@
 "use client";
 
 import { createSupabaseBrowserClient } from "@/lib/client/supabase";
-import { create } from "domain";
 
 // Todo list 가져오기
 export const getTodos = async () => {
@@ -26,13 +25,13 @@ export const getTodosById = async (id: number) => {
 };
 
 // todoList 가져오기 + search
-export const getTodosBySeaerch = async (terms: string) => {
+export const getTodosBySearch = async (terms: string) => {
   const supabase = createSupabaseBrowserClient();
   const result = await supabase
     .from("todos_no_rls")
     .select("*")
     .is("deleted_at", null)
-    .ilike("content", `%${terms}%`) // contetnt에 해당 단어가 포함되어 있는 것
+    .ilike("content", `%${terms}%`) // content에 해당 단어가 포함되어 있는 것
     .order("id", { ascending: false });
   return result.data;
 };
